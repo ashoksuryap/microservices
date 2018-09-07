@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>lab-3-client-solution</name>
-    <description>Example Spring Cloud config client</description>
+    <name>nextgen-client</name>
+    <description>Spring Cloud config client</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

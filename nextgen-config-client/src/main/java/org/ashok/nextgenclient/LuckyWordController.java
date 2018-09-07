@@ -1,4 +1,4 @@
-package demo;
+package org.ashok.nextgenclient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
