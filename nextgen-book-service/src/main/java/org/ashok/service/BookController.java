@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,13 +14,11 @@ import java.util.List;
 public class BookController {
 
 	@Autowired
-	RestTemplate restTemplate;
+	private ReviewServiceClient reviewServiceClient;
 
 	@RequestMapping(value="/books", method = RequestMethod.GET)
 	public List<BookVO> getBooks() {
 
-
-		
 		List<BookVO> booksToReturn = Arrays.asList(
 				new BookVO("title1", "ashok", "123"),
 				new BookVO("title2", "surya", "456"),
@@ -29,15 +26,12 @@ public class BookController {
 		);
 		
 		for (BookVO book : booksToReturn) {
-			List<ReviewVO> reviews = restTemplate.getForObject("http://review-service/review/books/"+book.getIsbn(), List.class);
+			List<ReviewVO> reviews = reviewServiceClient.getReviews(book);
 
 			book.setReviews(reviews);
 		}
 
 		return booksToReturn;
 	}
-
-
-
 
 }
