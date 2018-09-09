@@ -5,9 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ashok</groupId>
-    <artifactId>nextgen-review-service</artifactId>
+    <artifactId>nextgen-eureka-server</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <description>Review Service</description>
+    <description>Eureka server</description>
+
+    <!-- This Eureka server is a Spring Boot project. -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -17,10 +19,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>demo.MyApplication</start-class>
+        <start-class>demo.Application</start-class>
         <java.version>1.8</java.version>
     </properties>
 
+    <!-- We can't have two parent POMs, so use DependencyManagement
+    to show Maven where the Spring Cloud dependencies are. -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,17 +40,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
         <dependency>
@@ -73,3 +67,4 @@
     </build>
 
 </project>
+

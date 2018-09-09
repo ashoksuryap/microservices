@@ -1,12 +1,11 @@
 package org.ashok.service;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-import java.awt.print.Book;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,13 @@ import java.util.List;
 @RestController
 public class BookController {
 
+	@Autowired
+	RestTemplate restTemplate;
+
 	@RequestMapping(value="/books", method = RequestMethod.GET)
 	public List<BookVO> getBooks() {
+
+
 		
 		List<BookVO> booksToReturn = Arrays.asList(
 				new BookVO("title1", "ashok", "123"),
@@ -24,10 +28,11 @@ public class BookController {
 				new BookVO("title3", "raj", "789")
 		);
 		
-		/*for (BookVO book : booksToReturn) {
-			book.setInventory(inventoryServiceClient.getInventory(book.getIsbn()));
-			book.setReviews(reviewServiceClient.getReviews(book.getIsbn()));
-		}*/
+		for (BookVO book : booksToReturn) {
+			List<ReviewVO> reviews = restTemplate.getForObject("http://review-service/review/books/"+book.getIsbn(), List.class);
+
+			book.setReviews(reviews);
+		}
 
 		return booksToReturn;
 	}

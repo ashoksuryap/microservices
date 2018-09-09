@@ -1,3 +1,8 @@
 spring:
   application:
     name: review-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8002}/eureka/

@@ -10,8 +10,6 @@ public class BookVO {
 
 	private String isbn;
 	
-	private Integer Inventory;
-	
 	private List<ReviewVO> reviews;
 
 	public BookVO(String title, String author, String isbn) {
@@ -42,14 +40,6 @@ public class BookVO {
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
-	}
-
-	public Integer getInventory() {
-		return Inventory;
-	}
-
-	public void setInventory(Integer inventory) {
-		Inventory = inventory;
 	}
 
 	public List<ReviewVO> getReviews() {
