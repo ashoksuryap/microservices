@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
+@EnableFeignClients
 public class BookServiceApplication {
 
 	public static void main(String[] args) {
