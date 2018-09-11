@@ -16,8 +16,8 @@ public class ReviewServiceClientImpl implements ReviewServiceClient{
 
     @HystrixCommand(fallbackMethod = "callReviewService_Fallback")
     @Override
-    public List<ReviewVO> getReviews(BookVO book) {
-        return restTemplate.getForObject("http://review-service/review/books/"+book.getIsbn(), List.class);
+    public List<ReviewVO> getReviews(String isbn) {
+        return restTemplate.getForObject("http://review-service/review/books/"+isbn, List.class);
     }
 
     @SuppressWarnings("unused")

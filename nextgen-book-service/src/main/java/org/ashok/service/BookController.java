@@ -14,7 +14,7 @@ import java.util.List;
 public class BookController {
 
 	@Autowired
-	private ReviewServiceClient reviewServiceClient;
+	private ReviewServiceFeignClient reviewServiceClient;
 
 	@RequestMapping(value="/books", method = RequestMethod.GET)
 	public List<BookVO> getBooks() {
@@ -26,7 +26,7 @@ public class BookController {
 		);
 		
 		for (BookVO book : booksToReturn) {
-			List<ReviewVO> reviews = reviewServiceClient.getReviews(book);
+			List<ReviewVO> reviews = reviewServiceClient.getReviews(book.getIsbn());
 
 			book.setReviews(reviews);
 		}
