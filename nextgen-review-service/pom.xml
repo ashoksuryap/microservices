@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>demo.MyApplication</start-class>
+        <start-class>org.ashok.service.ReviewServiceApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
