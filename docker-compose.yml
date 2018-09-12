@@ -7,9 +7,9 @@ services:
     ports:
      - "8001:8001"
 
-  nextgen-book-service:
-    image: ashoksuryap/nextgen-book-service
-    hostname: nextgen-book-service
+  nextgen-bookservice:
+    image: ashoksuryap/nextgen-bookservice
+    hostname: nextgen-bookservice
     links:
       - nextgen-eureka-server
       - nextgen-reviewservice
