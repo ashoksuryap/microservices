@@ -1,9 +1,9 @@
 version: '2.2'
 
 services:
-  nextgen-erueka-server:
-    image: ashoksuryap/nextgen-erueka-server
-    hostname: nextgen-erueka-server
+  nextgen-eureka-server:
+    image: ashoksuryap/nextgen-eureka-server
+    hostname: nextgen-eureka-server
     ports:
      - "8001:8001"
 
@@ -11,10 +11,10 @@ services:
     image: ashoksuryap/nextgen-book-service
     hostname: nextgen-book-service
     links:
-      - nextgen-erueka-server
+      - nextgen-eureka-server
       - nextgen-review-service
     environment:
-       EUREKA_HOST: nextgen-erueka-server
+       EUREKA_HOST: nextgen-eureka-server
        EUREKA_PORT: 8001
     ports:
       - "8081:8081"
@@ -23,9 +23,9 @@ services:
     image: ashoksuryap/nextgen-review-service
     hostname: nextgen-review-service
     links:
-      - nextgen-erueka-server
+      - nextgen-eureka-server
     environment:
-       EUREKA_HOST: nextgen-erueka-server
+       EUREKA_HOST: nextgen-eureka-server
        EUREKA_PORT: 8001
     ports:
       - "8082:8082"
