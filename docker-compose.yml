@@ -15,7 +15,7 @@ services:
       - nextgen-review-service
     environment:
        EUREKA_HOST: nextgen-eureka-server
-       EUREKA_PORT: 8001
+       EUREKA_PORT: 8002
     ports:
       - "8081:8081"
 
@@ -26,6 +26,6 @@ services:
       - nextgen-eureka-server
     environment:
        EUREKA_HOST: nextgen-eureka-server
-       EUREKA_PORT: 8001
+       EUREKA_PORT: 8002
     ports:
       - "8082:8082"
