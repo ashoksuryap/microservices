@@ -12,16 +12,16 @@ services:
     hostname: nextgen-book-service
     links:
       - nextgen-eureka-server
-      - nextgen-review-service
+      - nextgen-reviewservice
     environment:
        EUREKA_HOST: nextgen-eureka-server
        EUREKA_PORT: 8001
     ports:
       - "8081:8081"
 
-  nextgen-review-service:
-    image: ashoksuryap/nextgen-review-service
-    hostname: nextgen-review-service
+  nextgen-reviewservice:
+    image: ashoksuryap/nextgen-reviewservice
+    hostname: nextgen-reviewservice
     links:
       - nextgen-eureka-server
     environment:
