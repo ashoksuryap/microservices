@@ -78,6 +78,6 @@ sudo docker login
 sudo docker push ashoksuryap/nextgen-edge-service:latest
 
 
-**Run below command in project root folder
+****************Run below command in project root folder
 
 sudo docker-compose up
