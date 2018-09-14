@@ -72,6 +72,11 @@ sudo docker image tag nextgen-review-service:latest ashoksuryap/nextgen-review-s
 sudo docker login
 sudo docker push ashoksuryap/nextgen-review-service:latest
 
+sudo docker build -t nextgen-edge-service:latest .
+sudo docker image tag nextgen-edge-service:latest ashoksuryap/nextgen-edge-service:latest
+sudo docker login
+sudo docker push ashoksuryap/nextgen-edge-service:latest
+
 Push to Remove Docker Hub
 =========================
 **Run below command in project root folder
