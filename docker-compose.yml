@@ -29,3 +29,16 @@ services:
        EUREKA_PORT: 8002
     ports:
       - "8082:8082"
+
+  nextgen-edge-service:
+    image: ashoksuryap/nextgen-edge-service
+    hostname: nextgen-edge-service
+    links:
+      - nextgen-eureka-server
+      - nextgen-book-service
+      - nextgen-review-service
+    environment:
+       EUREKA_HOST: nextgen-eureka-server
+       EUREKA_PORT: 8002
+    ports:
+      - "8080:8080"
