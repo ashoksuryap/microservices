@@ -1,16 +1,28 @@
-version: '2.2'
+version: '3'
 
 services:
   nextgen-eureka-server:
     image: ashoksuryap/nextgen-eureka-server
-    hostname: nextgen-eureka-server
+    container_name: nextgen-eureka-server
     ports:
      - "8002:8002"
 
+  nextgen-book-service:
+    image: ashoksuryap/nextgen-book-service
+    container_name: nextgen-book-service
+    depends_on:
+      - nextgen-eureka-server
+      - nextgen-review-service
+    environment:
+       EUREKA_HOST: nextgen-eureka-server
+       EUREKA_PORT: 8002
+    ports:
+      - "8081:8081"
+
   nextgen-review-service:
     image: ashoksuryap/nextgen-review-service
-    hostname: nextgen-review-service
-    links:
+    container_name: nextgen-review-service
+    depends_on:
       - nextgen-eureka-server
     environment:
        EUREKA_HOST: nextgen-eureka-server
@@ -18,22 +30,13 @@ services:
     ports:
       - "8082:8082"
 
-  nextgen-book-service:
-      image: ashoksuryap/nextgen-book-service
-      hostname: nextgen-book-service
-      links:
-        - nextgen-review-service
-      environment:
-         EUREKA_HOST: nextgen-eureka-server
-         EUREKA_PORT: 8002
-      ports:
-        - "8081:8081"
-
   nextgen-edge-service:
     image: ashoksuryap/nextgen-edge-service
-    hostname: nextgen-edge-service
-    links:
+    container_name: nextgen-edge-service
+    depends_on:
+      - nextgen-eureka-server
       - nextgen-book-service
+      - nextgen-review-service
     environment:
        EUREKA_HOST: nextgen-eureka-server
        EUREKA_PORT: 8002
