@@ -7,18 +7,6 @@ services:
     ports:
      - "8002:8002"
 
-  nextgen-book-service:
-    image: ashoksuryap/nextgen-book-service
-    hostname: nextgen-book-service
-    links:
-      - nextgen-eureka-server
-      - nextgen-review-service
-    environment:
-       EUREKA_HOST: nextgen-eureka-server
-       EUREKA_PORT: 8002
-    ports:
-      - "8081:8081"
-
   nextgen-review-service:
     image: ashoksuryap/nextgen-review-service
     hostname: nextgen-review-service
@@ -30,13 +18,22 @@ services:
     ports:
       - "8082:8082"
 
+  nextgen-book-service:
+      image: ashoksuryap/nextgen-book-service
+      hostname: nextgen-book-service
+      links:
+        - nextgen-review-service
+      environment:
+         EUREKA_HOST: nextgen-eureka-server
+         EUREKA_PORT: 8002
+      ports:
+        - "8081:8081"
+
   nextgen-edge-service:
     image: ashoksuryap/nextgen-edge-service
     hostname: nextgen-edge-service
     links:
-      - nextgen-eureka-server
       - nextgen-book-service
-      - nextgen-review-service
     environment:
        EUREKA_HOST: nextgen-eureka-server
        EUREKA_PORT: 8002

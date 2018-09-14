@@ -51,7 +51,7 @@ sudo yum install git
 
 ***************Build Project-generate jars
 
-Push to Remove Docker Hub
+Push to Docker Hub
 =========================
 **Run below commands in individual modules
 
@@ -77,8 +77,7 @@ sudo docker image tag nextgen-edge-service:latest ashoksuryap/nextgen-edge-servi
 sudo docker login
 sudo docker push ashoksuryap/nextgen-edge-service:latest
 
-Push to Remove Docker Hub
-=========================
+
 **Run below command in project root folder
 
 sudo docker-compose up
